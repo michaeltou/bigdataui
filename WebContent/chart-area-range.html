@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+ 
+    <!-- 页面Js -->  
+       
+        
+        <script src="http://code.highcharts.com/highcharts.js"></script>
+         <script src="https://code.highcharts.com/highcharts-more.js"></script>
+        
+          
+         <script type="text/javascript" src="jquery-2.2.4.js"></script>
+          
+         
+<script type="text/javascript">
+ 
+$(function () {
+    $.getJSON('https://www.highcharts.com/samples/data/jsonp.php?filename=range.json&callback=?', function (data) {
+
+        Highcharts.chart('container', {
+
+            chart: {
+                type: 'arearange',
+                zoomType: 'x'
+            },
+
+            title: {
+                text: 'Temperature variation by day'
+            },
+
+            xAxis: {
+                type: 'datetime'
+            },
+
+            yAxis: {
+                title: {
+                    text: null
+                }
+            },
+
+            tooltip: {
+                crosshairs: true,
+                shared: true,
+                valueSuffix: '°C'
+            },
+
+            legend: {
+                enabled: false
+            },
+
+            series: [{
+                name: 'Temperatures',
+                data: data
+            }]
+
+        });
+    });
+
+});
+ 
+</script>
+
+
+<body>
+<div id="container" style="width:100%; height:600px;"></div>
+
+</body>
+</html>
